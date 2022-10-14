@@ -52,8 +52,10 @@ for document in documents:
     except AttributeError:
       errors.append(para)
 
-print(len(entries))   
-print(entries[0])   
+print(f"Successfully extracted {len(entries)} entries")   
+print(f"\nFirst 10 entries: \n")   
+for i in range(0, 10):
+  print(f"Entry {i+1}: {entries[i]}\n")
 
 # write entries to a csv
 field_names = ['title', 'description']
@@ -61,3 +63,5 @@ with open('entries.csv', 'w+') as csvfile:
   writer = csv.DictWriter(csvfile, fieldnames=field_names, delimiter='|')
   writer.writeheader()
   writer.writerows(entries)
+
+print("\nCheck file entries.csv to see all entries")  
